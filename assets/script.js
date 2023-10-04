@@ -40,9 +40,9 @@ async function addNewPost(title, body) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: title,
+                title: title, // Pode escrever somente title, pq o nome das variaveis são iguais
                 body: body,
-                userId:2
+                userId: 2
             })
         }
     );
