@@ -1,7 +1,4 @@
-/* 
-URL da API
-https://jsonplaceholder.typicode.com/posts 
-*/
+/* URL da API: https://jsonplaceholder.typicode.com/posts */
 
 
 // Pegando os post "recentes" (como é uma API fake, pegamos os posts que a própria API fornece)
@@ -32,6 +29,31 @@ async function readPost() {
             postsArea.innerHTML = "Nenhum post para exibir.";
         }   
 }
+
+// Função de adicionar os post
+async function addNewPost(title, body) {
+    await fetch(
+        'https://jsonplaceholder.typicode.com/posts',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: title,
+                body: body,
+                userId:2
+            })
+        }
+    );
+
+    document.querySelector("#titleField").value = '';
+    document.querySelector("#bodyField").value = '';
+
+    readPost();
+}
+
+
 
 // Adicionando os novos posts
 document.querySelector("#inserirButton").addEventListener("click", () => {
